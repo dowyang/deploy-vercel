@@ -3,88 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
+    <title>CyberNexus - Next-Gen Quantum Security & Autonomous Defense</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         }
-
         :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
+            --bg-dark: #0a0d14;
+            --bg-card: rgba(18, 24, 38, 0.7);
+            --bg-card-hover: rgba(28, 38, 60, 0.85);
+            --primary: #00f5d4;
+            --primary-glow: rgba(0, 245, 212, 0.35);
+            --secondary: #00bbf9;
+            --accent: #7b2cbf;
+            --text-main: #f0f4f8;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(0, 245, 212, 0.2);
+            --nav-bg: rgba(10, 13, 20, 0.8);
         }
-
         body {
-            background-color: var(--light);
-            color: var(--text);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 245, 212, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 70%, rgba(123, 44, 191, 0.12) 0%, transparent 40%);
+            background-attachment: fixed;
         }
-
+        /* Header Navigation */
         header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: var(--text-main);
+            padding: 1.1rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
-
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
         }
-
         .logo i {
-            font-size: 2rem;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-shadow: 0 0 12px var(--primary-glow);
         }
-
+        .logo span {
+            background: linear-gradient(135deg, #ffffff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         nav ul {
             display: flex;
             list-style: none;
+            align-items: center;
         }
-
         nav ul li {
-            margin-left: 2rem;
+            margin-left: 2.2rem;
         }
-
         nav ul li a {
-            color: var(--white);
+            color: var(--text-muted);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
             padding: 0.5rem 0;
             position: relative;
         }
-
         nav ul li a:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
-
         nav ul li a::after {
             content: '';
             position: absolute;
@@ -92,631 +104,745 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--primary);
         }
-
         nav ul li a:hover::after {
             width: 100%;
         }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
+        /* Buttons */
         .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #050a14;
+            padding: 0.85rem 2.2rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 18px var(--primary-glow);
         }
-
         .btn:hover {
-            background-color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 245, 212, 0.55);
+            filter: brightness(1.1);
         }
-
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: var(--text-main);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: rgba(0, 245, 212, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.25);
+        }
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: radial-gradient(circle at center, rgba(11, 20, 38, 0.7) 0%, rgba(10, 13, 20, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            background: rgba(0, 245, 212, 0.1);
+            border: 1px solid var(--border-glow);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.15);
+        }
+        .hero-content {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 40%, var(--primary) 80%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 740px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+        /* Section Layout */
         section {
-            padding: 5rem 0;
+            padding: 6rem 0;
+            position: relative;
         }
-
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
-
-        .section-title h2 {
-            font-size: 2.5rem;
+        .section-title .tag {
             color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .section-title h2 {
+            font-size: 2.6rem;
+            color: var(--text-main);
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
         }
-
         .section-title h2::after {
             content: '';
             position: absolute;
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 2px;
+            box-shadow: 0 0 10px var(--primary);
         }
-
         .section-title p {
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 1.2rem auto 0;
+            font-size: 1.05rem;
         }
-
+        /* About Section */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
         }
-
         .about-img {
-            border-radius: 10px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 245, 212, 0.1);
+            position: relative;
         }
-
         .about-img img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-
         .about-img:hover img {
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
-
         .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            color: #ffffff;
+            font-weight: 700;
         }
-
         .about-text p {
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
-
+        .feature-bullets {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .feature-bullets li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .feature-bullets li i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        /* Stats Grid */
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 4rem;
         }
-
         .stat-item {
             text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            padding: 2.2rem 1.2rem;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
         .stat-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            border-color: var(--border-glow);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 245, 212, 0.15);
         }
-
+        .stat-item:hover::before {
+            opacity: 1;
+        }
         .stat-item i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary);
             margin-bottom: 1rem;
+            text-shadow: 0 0 15px var(--primary-glow);
         }
-
         .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
+            font-size: 2.6rem;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+            font-weight: 800;
         }
-
         .stat-item p {
-            color: var(--text);
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-
+        /* Initiatives / Capabilities Section */
         .initiatives {
-            background-color: var(--white);
+            background-color: #07090e;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-
         .initiatives-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
-
         .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
+            background: var(--bg-card);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.35s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
         }
-
         .initiative-card:hover {
             transform: translateY(-10px);
+            background: var(--bg-card-hover);
+            border-color: var(--border-glow);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 245, 212, 0.15);
         }
-
         .initiative-img {
-            height: 200px;
+            height: 220px;
             overflow: hidden;
+            position: relative;
         }
-
+        .initiative-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(18, 24, 38, 0.95) 100%);
+        }
         .initiative-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-
         .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
-
         .initiative-content {
-            padding: 1.5rem;
+            padding: 1.8rem;
         }
-
         .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
+            font-size: 1.45rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+            font-weight: 700;
         }
-
         .initiative-content p {
-            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+            line-height: 1.6;
         }
-
+        /* CTA Section */
         .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
+            background: radial-gradient(circle at center, rgba(123, 44, 191, 0.2) 0%, rgba(10, 13, 20, 0.9) 70%),
+                        linear-gradient(180deg, #07090e 0%, var(--bg-dark) 100%);
+            color: var(--text-main);
             text-align: center;
-            padding: 5rem 0;
+            padding: 6.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
-
         .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #ffffff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
         .cta p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 680px;
             margin-left: auto;
             margin-right: auto;
         }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
+        /* Footer */
         footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
+            background-color: #06080d;
+            color: var(--text-muted);
+            padding: 4.5rem 0 1.5rem;
         }
-
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 2.5rem;
+            margin-bottom: 3.5rem;
         }
-
         .footer-column h3 {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
             margin-bottom: 1.5rem;
             position: relative;
             padding-bottom: 10px;
         }
-
         .footer-column h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
+            width: 32px;
             height: 2px;
-            background-color: var(--accent);
+            background-color: var(--primary);
+            box-shadow: 0 0 6px var(--primary);
         }
-
         .footer-column p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.92rem;
+            line-height: 1.7;
         }
-
         .footer-links {
             list-style: none;
         }
-
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.75rem;
         }
-
         .footer-links li a {
-            color: var(--light);
+            color: var(--text-muted);
             text-decoration: none;
+            font-size: 0.92rem;
             transition: all 0.3s ease;
         }
-
         .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
+            color: var(--primary);
+            padding-left: 6px;
         }
-
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.9rem;
+        }
+        .contact-info i {
+            color: var(--primary);
+            width: 18px;
+        }
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
         }
-
         .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 50%;
-            color: var(--white);
+            color: var(--text-main);
             text-decoration: none;
             transition: all 0.3s ease;
         }
-
         .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
+            background-color: var(--primary);
+            color: #050a14;
+            transform: translateY(-4px);
+            box-shadow: 0 0 15px var(--primary-glow);
         }
-
         .copyright {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            font-size: 0.88rem;
         }
-
+        /* Mobile Menu */
         .mobile-menu {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            color: var(--text-main);
             cursor: pointer;
+            padding: 6px;
         }
-
+        /* Responsive Breakpoints */
         @media (max-width: 992px) {
             .about-content {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
-            
             .initiatives-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
             .stats {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1.05rem;
             }
-            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
             nav ul {
                 display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: var(--primary);
+                background-color: #0e131d;
                 flex-direction: column;
-                padding: 1rem 0;
+                padding: 1.5rem 0;
                 text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
             }
-            
             nav ul.active {
                 display: flex;
             }
-            
             nav ul li {
                 margin: 0;
                 padding: 0.8rem 0;
             }
-            
             .mobile-menu {
                 display: block;
             }
-            
             .initiatives-grid {
                 grid-template-columns: 1fr;
             }
-            
             .footer-content {
                 grid-template-columns: 1fr;
             }
-            
             .stats {
                 grid-template-columns: 1fr;
             }
         }
-
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Navigation Header -->
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
+                <i class="fas fa-shield-halved"></i>
+                <span>CyberNexus</span>
             </div>
             <nav>
-                <div class="mobile-menu">
+                <div class="mobile-menu" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
+                    <li><a href="#about">Architecture</a></li>
+                    <li><a href="#initiatives">Engines</a></li>
+                    <li><a href="#deployment">Deployment</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
+            <div class="hero-badge">
+                <i class="fas fa-bolt"></i> Quantum-Resilient Defense Protocol 4.0 Active
+            </div>
+            <h1>Neutralize Unknown Threats. Defend Digital Sovereignty.</h1>
+            <p>Engineered with adaptive neural computing and post-quantum cryptography, delivering sub-millisecond immune-grade resilience for distributed clouds, financial grids, and hyperscale infrastructure.</p>
+            <div class="hero-actions">
+                <a href="#deployment" class="btn">
+                    <i class="fas fa-terminal"></i> Join Defense Grid
+                </a>
+                <a href="#about" class="btn btn-outline">
+                    <i class="fas fa-circle-play"></i> Read Whitepaper
+                </a>
+            </div>
         </div>
     </section>
-
     <!-- About Section -->
     <section id="about">
         <div class="container">
             <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
+                <span class="tag">System Architecture</span>
+                <h2>Autonomous Cyber Defense Era</h2>
+                <p>Moving beyond static firewalls and signature engines to continuous, self-optimizing neural sentinels guarding every micro-payload.</p>
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2068&q=80" alt="High-tech server clusters and fiber optic streams">
                 </div>
                 <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <h3>Predictive Neural Inference Engine</h3>
+                    <p>Operating across distributed heterogeneous compute nodes, CyberNexus leverages deep graph neural networks to detect zero-day reconnaissance and anomalous traffic mutations in microsecond intervals.</p>
+                    <ul class="feature-bullets">
+                        <li><i class="fas fa-check-circle"></i> NIST-standardized Post-Quantum Cryptography (PQC) ciphers</li>
+                        <li><i class="fas fa-check-circle"></i> Sub-millisecond autonomous quarantine with sandboxed honeypot clone</li>
+                        <li><i class="fas fa-check-circle"></i> Decentralized global threat telemetry synchronization mesh</li>
+                    </ul>
+                    <a href="#initiatives" class="btn">Explore Capabilities</a>
                 </div>
             </div>
+            <!-- Stats Dashboard Counter -->
             <div class="stats">
                 <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
+                    <i class="fas fa-microchip"></i>
+                    <h3 class="counter" data-target="9999999">0</h3>
+                    <p>Daily Threat Interceptions</p>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
+                    <i class="fas fa-network-wired"></i>
+                    <h3 class="counter" data-target="86400">0</h3>
+                    <p>Active Edge Nodes</p>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
+                    <i class="fas fa-satellite"></i>
+                    <h3 class="counter" data-target="164">0</h3>
+                    <p>Connected Sovereign Hubs</p>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
+                    <i class="fas fa-bolt-lightning"></i>
+                    <h3 class="counter" data-target="2">0</h3>
+                    <p>Interception Latency (ms)</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Initiatives Section -->
+    <!-- Initiatives / Core Engines Section -->
     <section class="initiatives" id="initiatives">
         <div class="container">
             <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
+                <span class="tag">Core Capabilities</span>
+                <h2>Defense Architecture Modules</h2>
+                <p>Modular, zero-trust capabilities built specifically for hybrid cloud ecosystems and hyperscale interconnects.</p>
             </div>
             <div class="initiatives-grid">
                 <div class="initiative-card">
                     <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80" alt="Quantum Encryption Technology">
                     </div>
                     <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
+                        <h3>Quantum Key Distribution (QKD)</h3>
+                        <p>Leveraging quantum entanglement physics to secure channel transmissions, eliminating the theoretical risk of passive eavesdropping and man-in-the-middle decryption.</p>
+                        <a href="#" class="btn btn-outline">Explore Engine <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="initiative-card">
                     <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1964&q=80" alt="Autonomous Neural Sentinel">
                     </div>
                     <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
+                        <h3>Autonomous Sentinel-AI</h3>
+                        <p>Continually evolving autonomous agents capable of identifying, tracing, and neutralizing Advanced Persistent Threats (APTs) without human intervention.</p>
+                        <a href="#" class="btn btn-outline">Explore Engine <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="initiative-card">
                     <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80" alt="Global Orbital Satellite Mesh">
                     </div>
                     <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
+                        <h3>Orbital & Terrestrial Mesh</h3>
+                        <p>Spanning low-earth orbit constellations and ground-based high-density edge hubs, providing zero-downtime failover and seamless state replication.</p>
+                        <a href="#" class="btn btn-outline">Explore Engine <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
+    <!-- Call to Action Section -->
+    <section class="cta" id="deployment">
         <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
+            <h2>Fortify Your Infrastructure Beyond Zero-Day Horizons</h2>
+            <p>Deploy in minutes with declarative configuration. Connect your multi-cloud environments, edge arrays, or private VPCs into the global self-healing immune grid.</p>
+            <a href="#" class="btn">
+                <i class="fas fa-fingerprint"></i> Request Enterprise Sandbox
+            </a>
         </div>
     </section>
-
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
+                    <h3>CyberNexus Labs</h3>
+                    <p>Pioneering open quantum security protocols and enterprise-grade autonomous cyber defense architectures for the post-silicon compute era.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="X / Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
+                    <h3>Navigation</h3>
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#about">Architecture</a></li>
+                        <li><a href="#initiatives">Core Engines</a></li>
+                        <li><a href="#deployment">Deployment</a></li>
+                        <li><a href="#contact">Compliance</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Our Programs</h3>
+                    <h3>Solutions</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
+                        <li><a href="#">Post-Quantum Ciphers</a></li>
+                        <li><a href="#">Zero-Trust Microsegmentation</a></li>
+                        <li><a href="#">AI Penetration Synthesizer</a></li>
+                        <li><a href="#">Financial Cryptography Stack</a></li>
+                        <li><a href="#">Distributed Edge Failover</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
+                <div class="footer-column contact-info">
+                    <h3>Global Headquarters</h3>
+                    <p><i class="fas fa-location-dot"></i> 450 Innovation Way, Palo Alto, CA 94301</p>
+                    <p><i class="fas fa-phone"></i> +1 (650) 840-7700</p>
+                    <p><i class="fas fa-envelope"></i> contact@cybernexus-labs.io</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+                <p>&copy; 2026 CyberNexus Technologies Inc. All rights reserved. Licensed under Apache 2.0 & Enterprise SOC-3 Compliant.</p>
             </div>
         </div>
     </footer>
-
+    <!-- Interactive Scripts -->
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
+        // Mobile Navigation Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navList = document.querySelector('nav ul');
+        
+        mobileMenu.addEventListener('click', function() {
+            navList.classList.toggle('active');
         });
-
-        // Counter Animation
+        // Numerical Increment Animation (with easeOutQuad & toLocaleString)
         function animateCounters() {
             const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
             
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
+                const duration = 2000; // Animation duration: 2s
+                const startTime = performance.now();
                 
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // easeOutQuad easing formula
+                    const easeProgress = 1 - (1 - progress) * (1 - progress);
+                    
+                    const currentVal = Math.floor(easeProgress * target);
+                    counter.innerText = currentVal.toLocaleString();
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
                 }
+                
+                requestAnimationFrame(update);
             });
         }
-
-        // Initialize counters when page loads
+        // Initialize counters when DOM is loaded
         window.addEventListener('load', animateCounters);
-
-        // Smooth scrolling for navigation links
+        // Smooth Scroll & Auto Menu Close
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                if (targetId === '#') return;
                 
                 const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                if (targetElement) {
+                    e.preventDefault();
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 75,
                         behavior: 'smooth'
                     });
                     
-                    document.querySelector('nav ul').classList.remove('active');
+                    navList.classList.remove('active');
                 }
             });
         });
     </script>
 </body>
-
 </html>
